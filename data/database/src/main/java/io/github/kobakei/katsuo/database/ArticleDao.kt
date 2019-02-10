@@ -9,8 +9,8 @@ import io.github.kobakei.katsuo.entity.Article
 interface ArticleDao {
 
     @Query("SELECT * FROM article")
-    fun getAll(): List<Article>
+    suspend fun getAll(): List<Article>
 
     @Insert
-    fun insertAll(vararg articles: Article)
+    suspend fun insertAll(vararg articles: Article)
 }

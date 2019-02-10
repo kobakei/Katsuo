@@ -26,7 +26,7 @@ class App : Application() {
             single<DetailRouter> { DetailRouterImpl() }
             single { Router(get()) }
 
-            viewModel { TimelineViewModel() }
+            viewModel { TimelineViewModel(get()) }
             viewModel { DetailViewModel() }
         }
         startKoin(this, listOf(module))

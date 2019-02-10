@@ -1,5 +1,6 @@
 package io.github.kobakei.katsuo.timeline
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,10 +9,10 @@ import io.github.kobakei.katsuo.repository.ArticleRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class TimelineViewModel : ViewModel() {
+class TimelineViewModel(context: Context) : ViewModel() {
 
     // TODO DI
-    private val repo = ArticleRepository()
+    private val repo = ArticleRepository(context)
 
     val articles = MutableLiveData<List<Article>>()
 
