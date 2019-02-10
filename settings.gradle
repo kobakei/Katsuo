@@ -3,7 +3,7 @@ include ':app',
         ':data:api',
         ':data:database',
         ':data:repository',
-        ':presentation:common',
-        ':presentation:router',
-        ':presentation:timeline',
-        ':presentation:detail'
+        ':ui:common',
+        ':ui:router',
+        ':ui:timeline',
+        ':ui:detail'

@@ -30,8 +30,8 @@ android {
 
 dependencies {
     implementation project(':data:entity')
-    implementation project(':presentation:common')
-    implementation project(':presentation:router')
+    implementation project(':ui:common')
+    implementation project(':ui:router')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
