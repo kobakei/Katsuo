@@ -11,6 +11,9 @@ interface ArticleDao {
     @Query("SELECT * FROM article")
     suspend fun getAll(): List<Article>
 
+    @Query("SELECT * FROM article WHERE author_id = :authorId")
+    suspend fun getByAuthorId(authorId: Long): List<Article>
+
     @Insert
     suspend fun insertAll(vararg articles: Article)
 }

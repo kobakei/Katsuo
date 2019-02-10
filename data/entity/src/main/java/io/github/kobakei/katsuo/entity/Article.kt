@@ -1,14 +1,11 @@
 package io.github.kobakei.katsuo.entity
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.Serializable
 
-@Entity
+@Entity(indices = [Index("author_id")])
 @Parcelize
 @Serializable
 data class Article(
