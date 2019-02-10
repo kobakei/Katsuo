@@ -1,4 +1,4 @@
-package io.github.kobakei.katsuo
+package io.github.kobakei.katsuo.timeline
 
 import androidx.lifecycle.ViewModel
 
