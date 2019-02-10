@@ -33,6 +33,8 @@ android {
 
 dependencies {
     implementation project(':presentation:timeline')
+    implementation project(':presentation:detail')
+    implementation project(':presentation:router')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

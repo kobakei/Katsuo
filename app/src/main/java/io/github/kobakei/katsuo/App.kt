@@ -1,6 +1,8 @@
 package io.github.kobakei.katsuo
 
 import android.app.Application
+import io.github.kobakei.katsuo.detail.DetailRouterImpl
+import io.github.kobakei.katsuo.router.DetailRouter
 import io.github.kobakei.katsuo.timeline.TimelineViewModel
 import org.koin.android.ext.android.startKoin
 import org.koin.android.viewmodel.ext.koin.viewModel
@@ -17,6 +19,8 @@ class App : Application() {
         }
 
         val module = module {
+            single<DetailRouter> { DetailRouterImpl() }
+
             viewModel { TimelineViewModel() }
         }
         startKoin(this, listOf(module))
