@@ -7,11 +7,16 @@
         <variable
             name="item"
             type="io.github.kobakei.katsuo.entity.Article"/>
+        <variable
+            name="viewModel"
+            type="io.github.kobakei.katsuo.timeline.TimelineViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:onClick="@{() -> viewModel.onItemClick(item)}">
         <ImageView
             android:layout_height="100dp"
             android:id="@+id/imageView" android:layout_marginTop="8dp"

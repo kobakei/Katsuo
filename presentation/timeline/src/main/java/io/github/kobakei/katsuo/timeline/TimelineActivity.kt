@@ -23,7 +23,7 @@ class TimelineActivity : AppCompatActivity() {
         binding.viewModel = timelineViewModel
         observeViewModel()
 
-        adapter = TimelineAdapter(this)
+        adapter = TimelineAdapter(this, timelineViewModel)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 

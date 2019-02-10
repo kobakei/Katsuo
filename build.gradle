@@ -8,6 +8,7 @@ buildscript {
         lifecycle_version = "2.0.0"
         koin_version = '1.0.2'
         glide_version = '4.8.0'
+        timber_version = '4.7.1'
     }
     repositories {
         google()

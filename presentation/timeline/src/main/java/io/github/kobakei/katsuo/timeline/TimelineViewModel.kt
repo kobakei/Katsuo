@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
 class TimelineViewModel : ViewModel() {
@@ -24,4 +25,7 @@ class TimelineViewModel : ViewModel() {
         }
     }
 
+    fun onItemClick(article: Article) {
+        Timber.v("click: ${article.title}")
+    }
 }

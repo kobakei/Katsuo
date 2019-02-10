@@ -8,7 +8,8 @@ import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.timeline.databinding.TimelineItemBinding
 
 class TimelineAdapter(
-        context: Context
+    context: Context,
+    private val timelineViewModel: TimelineViewModel
 ) : RecyclerView.Adapter<TimelineViewHolder>() {
 
     val articles = mutableListOf<Article>()
@@ -17,6 +18,7 @@ class TimelineAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineViewHolder {
         val binding = TimelineItemBinding.inflate(inflater, parent, false)
+        binding.viewModel = timelineViewModel
         return TimelineViewHolder(binding)
     }
 

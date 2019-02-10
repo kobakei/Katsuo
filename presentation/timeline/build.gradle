@@ -48,6 +48,8 @@ dependencies {
 
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
     testImplementation 'junit:junit:4.12'
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 
