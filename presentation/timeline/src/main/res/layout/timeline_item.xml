@@ -20,7 +20,7 @@
                 app:layout_constraintBottom_toBottomOf="parent" tools:src="@tools:sample/backgrounds/scenic"
                 android:layout_width="100dp" android:scaleType="centerCrop"/>
         <TextView
-                android:text="TextView"
+                android:text="@{item.title}"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
                 android:id="@+id/textView" app:layout_constraintStart_toEndOf="@+id/imageView"

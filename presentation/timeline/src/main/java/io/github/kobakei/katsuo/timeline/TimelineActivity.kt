@@ -13,7 +13,7 @@ class TimelineActivity : AppCompatActivity() {
 
     private lateinit var binding: TimelineActivityBinding
     private lateinit var viewModel: TimelineViewModel
-    private lateinit var adapter: MainAdapter
+    private lateinit var adapter: TimelineAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class TimelineActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         observeViewModel()
 
-        adapter = MainAdapter(this)
+        adapter = TimelineAdapter(this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 

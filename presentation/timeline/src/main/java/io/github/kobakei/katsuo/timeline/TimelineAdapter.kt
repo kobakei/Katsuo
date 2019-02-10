@@ -7,26 +7,27 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.timeline.databinding.TimelineItemBinding
 
-class MainAdapter(
+class TimelineAdapter(
         context: Context
-) : RecyclerView.Adapter<MainViewHolder>() {
+) : RecyclerView.Adapter<TimelineViewHolder>() {
 
     val articles = mutableListOf<Article>()
 
     private val inflater = LayoutInflater.from(context)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineViewHolder {
         val binding = TimelineItemBinding.inflate(inflater, parent, false)
-        return MainViewHolder(binding)
+        return TimelineViewHolder(binding)
     }
 
     override fun getItemCount(): Int = articles.size
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TimelineViewHolder, position: Int) {
         val binding = holder.binding
         binding.item = articles[position]
+        binding.executePendingBindings()
     }
 
 }
 
-class MainViewHolder(val binding: TimelineItemBinding) : RecyclerView.ViewHolder(binding.root)
+class TimelineViewHolder(val binding: TimelineItemBinding) : RecyclerView.ViewHolder(binding.root)
