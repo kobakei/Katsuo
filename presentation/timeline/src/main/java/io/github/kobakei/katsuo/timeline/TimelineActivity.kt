@@ -7,9 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.github.kobakei.katsuo.entity.Article
-import io.github.kobakei.katsuo.entity.Author
-import io.github.kobakei.katsuo.entity.Image
 import io.github.kobakei.katsuo.timeline.databinding.TimelineActivityBinding
 
 class TimelineActivity : AppCompatActivity() {
@@ -28,9 +25,11 @@ class TimelineActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         observeViewModel()
 
-        val adapter = MainAdapter(this)
+        adapter = MainAdapter(this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        viewModel.loadData()
     }
 
     private fun observeViewModel() {
