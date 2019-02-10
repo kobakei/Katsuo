@@ -2,6 +2,7 @@ include ':app',
         ':data:entity',
         ':data:api',
         ':data:repository',
+        ':presentation:common',
         ':presentation:router',
         ':presentation:timeline',
         ':presentation:detail'

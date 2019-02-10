@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/data/entity" />
             <option value="$PROJECT_DIR$/data/repository" />
             <option value="$PROJECT_DIR$/presentation" />
+            <option value="$PROJECT_DIR$/presentation/common" />
             <option value="$PROJECT_DIR$/presentation/detail" />
             <option value="$PROJECT_DIR$/presentation/router" />
             <option value="$PROJECT_DIR$/presentation/timeline" />
