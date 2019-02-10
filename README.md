@@ -16,6 +16,7 @@ A sample that adopted the latest trend in Android development
   - LiveData
   - KTX
   - Room
+- Koin
 - OkHttp
 - Retrofit
   - Kotlin coroutines adapter

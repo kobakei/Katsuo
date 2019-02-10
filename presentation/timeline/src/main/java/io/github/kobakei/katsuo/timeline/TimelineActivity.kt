@@ -4,15 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.kobakei.katsuo.timeline.databinding.TimelineActivityBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class TimelineActivity : AppCompatActivity() {
 
     private lateinit var binding: TimelineActivityBinding
-    private lateinit var viewModel: TimelineViewModel
+    private val timelineViewModel: TimelineViewModel by viewModel()
     private lateinit var adapter: TimelineAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,19 +20,18 @@ class TimelineActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.timeline_activity)
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProviders.of(this).get()
-        binding.viewModel = viewModel
+        binding.viewModel = timelineViewModel
         observeViewModel()
 
         adapter = TimelineAdapter(this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModel.loadData()
+        timelineViewModel.loadData()
     }
 
     private fun observeViewModel() {
-        viewModel.articles.observe(this, Observer {
+        timelineViewModel.articles.observe(this, Observer {
             adapter.articles.clear()
             adapter.articles.addAll(it ?: listOf())
             adapter.notifyDataSetChanged()

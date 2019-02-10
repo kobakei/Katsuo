@@ -18,7 +18,8 @@
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" tools:src="@tools:sample/backgrounds/scenic"
-                android:layout_width="100dp" android:scaleType="centerCrop"/>
+                android:layout_width="100dp" android:scaleType="centerCrop"
+                app:imageUrl="@{item.image.thumbnail}"/>
         <TextView
                 android:text="@{item.title}"
                 android:layout_width="0dp"
