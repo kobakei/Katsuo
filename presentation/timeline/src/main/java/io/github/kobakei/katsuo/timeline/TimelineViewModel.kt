@@ -2,6 +2,7 @@ package io.github.kobakei.katsuo.timeline
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.repository.ArticleRepository
 import kotlinx.coroutines.CoroutineScope
@@ -10,25 +11,15 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class TimelineViewModel : ViewModel(), CoroutineScope {
-
-    private val job: Job = Job()
-
-    override val coroutineContext: CoroutineContext
-        get() = job
+class TimelineViewModel : ViewModel() {
 
     // TODO DI
-    val repo = ArticleRepository()
+    private val repo = ArticleRepository()
 
     val articles = MutableLiveData<List<Article>>()
 
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel()
-    }
-
     fun loadData() {
-        launch(Dispatchers.Main) {
+        viewModelScope.launch {
             articles.postValue(repo.getArticles())
         }
     }
