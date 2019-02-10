@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="io.github.kobakei.katsuo.timeline"/>
+    package="io.github.kobakei.katsuo.timeline">
+
+    <application>
+        <activity android:name=".TimelineActivity"></activity>
+    </application>
+
+</manifest>

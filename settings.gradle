@@ -6,4 +6,5 @@ include ':app',
         ':ui:common',
         ':ui:router',
         ':ui:timeline',
-        ':ui:detail'
+        ':ui:detail',
+        ':ui:author'
