@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.kobakei.katsuo.entity.Photo
-import io.github.kobakei.katsuo.timeline.databinding.MainItemBinding
+import io.github.kobakei.katsuo.timeline.databinding.TimelineItemBinding
 
 class MainAdapter(
         context: Context,
@@ -15,7 +15,7 @@ class MainAdapter(
     private val inflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = MainItemBinding.inflate(inflater, parent, false)
+        val binding = TimelineItemBinding.inflate(inflater, parent, false)
         return MainViewHolder(binding)
     }
 
@@ -28,4 +28,4 @@ class MainAdapter(
 
 }
 
-class MainViewHolder(val binding: MainItemBinding) : RecyclerView.ViewHolder(binding.root)
+class MainViewHolder(val binding: TimelineItemBinding) : RecyclerView.ViewHolder(binding.root)

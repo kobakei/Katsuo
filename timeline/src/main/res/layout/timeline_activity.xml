@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="viewModel" type="io.github.kobakei.katsuo.timeline.MainViewModel" />
+        <variable name="viewModel" type="io.github.kobakei.katsuo.timeline.TimelineViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +19,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" tools:listitem="@layout/main_item"/>
+                app:layout_constraintTop_toTopOf="parent" tools:listitem="@layout/timeline_item"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

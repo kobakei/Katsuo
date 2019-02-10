@@ -7,17 +7,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.kobakei.katsuo.entity.Photo
-import io.github.kobakei.katsuo.timeline.databinding.MainActivityBinding
+import io.github.kobakei.katsuo.timeline.databinding.TimelineActivityBinding
 
-class MainActivity : AppCompatActivity() {
+class TimelineActivity : AppCompatActivity() {
 
-    private lateinit var binding: MainActivityBinding
-    private lateinit var viewModel: MainViewModel
+    private lateinit var binding: TimelineActivityBinding
+    private lateinit var viewModel: TimelineViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
+        binding = DataBindingUtil.setContentView(this, R.layout.timeline_activity)
         binding.lifecycleOwner = this
 
         viewModel = ViewModelProviders.of(this).get()
