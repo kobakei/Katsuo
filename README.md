@@ -10,14 +10,17 @@ A sample that adopted the latest trend in Android development
 ## Libraries
 
 - Android Jetpack
+  - Data binding
   - Lifecycle
   - ViewModel
+  - LiveData
   - KTX
   - Room
 - OkHttp
 - Retrofit
   - Kotlin coroutines adapter
   - KotlinX serialization converter
+- Glide
   
 ## License
 
