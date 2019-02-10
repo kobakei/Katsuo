@@ -2,6 +2,7 @@ package io.github.kobakei.katsuo
 
 import android.app.Application
 import io.github.kobakei.katsuo.detail.DetailRouterImpl
+import io.github.kobakei.katsuo.detail.DetailViewModel
 import io.github.kobakei.katsuo.router.DetailRouter
 import io.github.kobakei.katsuo.timeline.TimelineViewModel
 import org.koin.android.ext.android.startKoin
@@ -22,6 +23,7 @@ class App : Application() {
             single<DetailRouter> { DetailRouterImpl() }
 
             viewModel { TimelineViewModel() }
+            viewModel { DetailViewModel() }
         }
         startKoin(this, listOf(module))
     }
