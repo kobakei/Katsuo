@@ -3,6 +3,7 @@ package io.github.kobakei.katsuo.timeline
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ class TimelineActivity : AppCompatActivity() {
 
     private lateinit var binding: TimelineActivityBinding
     private lateinit var viewModel: TimelineViewModel
+    private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +26,18 @@ class TimelineActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get()
         binding.viewModel = viewModel
+        observeViewModel()
 
-        val image = Image("", "")
-        val author = Author(1, "Name", image)
-        binding.recyclerView.adapter = MainAdapter(this, listOf(
-            Article(1, "title 1", "url 1", image, author),
-            Article(2, "title 2", "url 2", image, author),
-            Article(3, "title 3", "url 3", image, author)
-        ))
+        val adapter = MainAdapter(this)
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun observeViewModel() {
+        viewModel.articles.observe(this, Observer {
+            adapter.articles.clear()
+            adapter.articles.addAll(it ?: listOf())
+            adapter.notifyDataSetChanged()
+        })
     }
 }

@@ -8,9 +8,10 @@ import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.timeline.databinding.TimelineItemBinding
 
 class MainAdapter(
-        context: Context,
-        private val items: List<Article>
+        context: Context
 ) : RecyclerView.Adapter<MainViewHolder>() {
+
+    val articles = mutableListOf<Article>()
 
     private val inflater = LayoutInflater.from(context)
 
@@ -19,11 +20,11 @@ class MainAdapter(
         return MainViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = articles.size
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val binding = holder.binding
-        binding.item = items[position]
+        binding.item = articles[position]
     }
 
 }
