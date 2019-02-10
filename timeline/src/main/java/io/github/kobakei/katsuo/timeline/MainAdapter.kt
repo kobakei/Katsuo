@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.github.kobakei.katsuo.databinding.MainItemBinding
 import io.github.kobakei.katsuo.entity.Photo
+import io.github.kobakei.katsuo.timeline.databinding.MainItemBinding
 
 class MainAdapter(
         context: Context,

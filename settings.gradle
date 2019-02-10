@@ -1,1 +1,1 @@
-include ':app', ':entity'
+include ':app', ':entity', ':timeline'

@@ -6,9 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.github.kobakei.katsuo.R
-import io.github.kobakei.katsuo.databinding.MainActivityBinding
 import io.github.kobakei.katsuo.entity.Photo
+import io.github.kobakei.katsuo.timeline.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
 
