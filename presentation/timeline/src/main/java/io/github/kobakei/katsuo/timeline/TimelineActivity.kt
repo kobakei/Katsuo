@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.kobakei.katsuo.router.DetailRouter
+import io.github.kobakei.katsuo.router.Router
 import io.github.kobakei.katsuo.timeline.databinding.TimelineActivityBinding
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -14,7 +15,7 @@ class TimelineActivity : AppCompatActivity() {
 
     private lateinit var binding: TimelineActivityBinding
     private val timelineViewModel: TimelineViewModel by viewModel()
-    private val detailRouter: DetailRouter by inject()
+    private val router: Router by inject()
     private lateinit var adapter: TimelineAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class TimelineActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         })
         timelineViewModel.articleClick.observe(this, Observer {
-            detailRouter.navigateToDetail(this, it)
+            router.detail.navigateToDetail(this, it)
         })
     }
 }
