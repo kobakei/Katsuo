@@ -4,12 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.github.kobakei.katsuo.entity.Photo
+import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.timeline.databinding.TimelineItemBinding
 
 class MainAdapter(
         context: Context,
-        private val items: List<Photo>
+        private val items: List<Article>
 ) : RecyclerView.Adapter<MainViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
