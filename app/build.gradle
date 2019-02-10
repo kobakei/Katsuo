@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    implementation project(':feature:timeline')
+    implementation project(':presentation:timeline')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

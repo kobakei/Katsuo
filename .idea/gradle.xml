@@ -9,9 +9,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/entity" />
-            <option value="$PROJECT_DIR$/feature" />
-            <option value="$PROJECT_DIR$/feature/timeline" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data/api" />
+            <option value="$PROJECT_DIR$/data/entity" />
+            <option value="$PROJECT_DIR$/data/repository" />
+            <option value="$PROJECT_DIR$/presentation" />
+            <option value="$PROJECT_DIR$/presentation/detail" />
+            <option value="$PROJECT_DIR$/presentation/router" />
+            <option value="$PROJECT_DIR$/presentation/timeline" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

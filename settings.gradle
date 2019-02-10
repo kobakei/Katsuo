@@ -1,1 +1,7 @@
-include ':app', ':entity', ':feature:timeline'
+include ':app',
+        ':data:entity',
+        ':data:api',
+        ':data:repository',
+        ':presentation:router',
+        ':presentation:timeline',
+        ':presentation:detail'
