@@ -23,13 +23,15 @@ android {
         }
     }
     dataBinding {
-        enabled true
+        enabled = true
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(':entity')
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     def support_version = '1.1.0-alpha02'
     implementation "androidx.appcompat:appcompat:$support_version"
