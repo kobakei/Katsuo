@@ -2,7 +2,13 @@
     package="io.github.kobakei.katsuo.timeline">
 
     <application>
-        <activity android:name=".TimelineActivity"></activity>
+        <activity android:name=".TimelineActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -16,6 +16,8 @@ class AuthorViewModel(context: Context) : ViewModel() {
     val author = MutableLiveData<Author>()
     val articles = MutableLiveData<List<Article>>()
 
+    val articleClick = MutableLiveData<Article>()
+
     fun loadArticles(author: Author) {
         this.author.value = author
         author.let {
@@ -25,4 +27,7 @@ class AuthorViewModel(context: Context) : ViewModel() {
         }
     }
 
+    fun onArticleClick(article: Article) {
+        articleClick.postValue(article)
+    }
 }

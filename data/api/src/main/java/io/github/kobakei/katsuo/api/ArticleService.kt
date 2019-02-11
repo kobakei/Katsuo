@@ -10,6 +10,10 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.http.GET
 
+/**
+ * Dummy json
+ * https://gist.github.com/kobakei/a091214688e4c03e4e582019d16cc778
+ */
 interface ArticleService {
     @GET("kobakei/a091214688e4c03e4e582019d16cc778/raw/0c2fc5cdaf7aa630a4d02a8477a905b2a20c40bc/test.json")
     fun getArticles(): Deferred<Articles>

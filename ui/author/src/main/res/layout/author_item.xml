@@ -5,13 +5,18 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="io.github.kobakei.katsuo.author.AuthorViewModel" />
+        <variable
             name="article"
             type="io.github.kobakei.katsuo.entity.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:onClick="@{()-> viewModel.onArticleClick(article)}">
 
         <ImageView
             android:id="@+id/imageView2"

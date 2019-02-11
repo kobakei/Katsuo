@@ -10,7 +10,7 @@ import io.github.kobakei.katsuo.author.databinding.AuthorItemBinding
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.entity.Author
 
-class AuthorAdapter(context: Context) : RecyclerView.Adapter<AuthorViewHolder>() {
+class AuthorAdapter(context: Context, val viewModel: AuthorViewModel) : RecyclerView.Adapter<AuthorViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -33,6 +33,7 @@ class AuthorAdapter(context: Context) : RecyclerView.Adapter<AuthorViewHolder>()
             }
             TYPE_ITEM -> {
                 val binding = AuthorItemBinding.inflate(inflater, parent, false)
+                binding.viewModel = viewModel
                 AuthorItemViewHolder(binding)
             }
             else -> throw IllegalArgumentException()
@@ -45,9 +46,11 @@ class AuthorAdapter(context: Context) : RecyclerView.Adapter<AuthorViewHolder>()
         when (holder) {
             is AuthorHeaderViewHolder -> {
                 holder.binding.author = author
+                holder.binding.executePendingBindings()
             }
             is AuthorItemViewHolder -> {
                 holder.binding.article = articles[position - 1]
+                holder.binding.executePendingBindings()
             }
         }
     }
