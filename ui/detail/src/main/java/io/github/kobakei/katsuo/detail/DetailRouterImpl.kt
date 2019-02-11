@@ -8,9 +8,7 @@ import io.github.kobakei.katsuo.router.DetailRouter
 class DetailRouterImpl : DetailRouter {
 
     override fun navigateToDetail(activity: Activity, article: Article) {
-        val intent = Intent(activity, DetailActivity::class.java).apply {
-            putExtra("article", article)
-        }
+        val intent = DetailActivity.createIntent(activity, article)
         activity.startActivity(intent)
     }
 

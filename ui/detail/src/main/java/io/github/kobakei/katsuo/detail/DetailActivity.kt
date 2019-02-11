@@ -1,11 +1,14 @@
 package io.github.kobakei.katsuo.detail
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import io.github.kobakei.katsuo.detail.databinding.DetailActivityBinding
 import io.github.kobakei.katsuo.entity.Article
+import io.github.kobakei.katsuo.presentation.common.NonNullExtra
 import io.github.kobakei.katsuo.router.Router
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -16,6 +19,8 @@ class DetailActivity : AppCompatActivity() {
     private val detailViewModel: DetailViewModel by viewModel()
     private val router: Router by inject()
 
+    private val article: Article by NonNullExtra()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +28,6 @@ class DetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = detailViewModel
 
-        val article: Article = intent.getParcelableExtra("article")
         detailViewModel.article = article
 
         observeViewModel()
@@ -33,5 +37,12 @@ class DetailActivity : AppCompatActivity() {
         detailViewModel.authorClick.observe(this, Observer {
             router.author.navigateToAuthor(this, it)
         })
+    }
+
+    companion object {
+        fun createIntent(activity: Activity, article: Article): Intent =
+                Intent(activity, DetailActivity::class.java).apply {
+                    putExtra(DetailActivity::article.name, article)
+                }
     }
 }

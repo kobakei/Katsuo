@@ -7,9 +7,7 @@ import io.github.kobakei.katsuo.router.AuthorRouter
 
 class AuthorRouterImpl : AuthorRouter {
     override fun navigateToAuthor(activity: Activity, author: Author) {
-        val intent = Intent(activity, AuthorActivity::class.java).apply {
-            putExtra("author", author)
-        }
+        val intent = AuthorActivity.createIntent(activity, author)
         activity.startActivity(intent)
     }
 }
