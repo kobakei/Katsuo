@@ -2,8 +2,11 @@ package io.github.kobakei.katsuo
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import io.github.kobakei.katsuo.author.AuthorRouterImpl
+import io.github.kobakei.katsuo.author.AuthorViewModel
 import io.github.kobakei.katsuo.detail.DetailRouterImpl
 import io.github.kobakei.katsuo.detail.DetailViewModel
+import io.github.kobakei.katsuo.router.AuthorRouter
 import io.github.kobakei.katsuo.router.DetailRouter
 import io.github.kobakei.katsuo.router.Router
 import io.github.kobakei.katsuo.timeline.TimelineViewModel
@@ -24,10 +27,12 @@ class App : Application() {
 
         val module = module {
             single<DetailRouter> { DetailRouterImpl() }
-            single { Router(get()) }
+            single<AuthorRouter> { AuthorRouterImpl() }
+            single { Router(get(), get()) }
 
             viewModel { TimelineViewModel(get()) }
             viewModel { DetailViewModel() }
+            viewModel { AuthorViewModel(get()) }
         }
         startKoin(this, listOf(module))
     }

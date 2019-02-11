@@ -47,7 +47,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView"
             tools:srcCompat="@tools:sample/avatars"
-            app:imageUrl="@{viewModel.article.author.image.thumbnail}"/>
+            app:imageUrl="@{viewModel.article.author.image.thumbnail}"
+            android:onClick="@{viewModel::onAuthorClick}" />
 
         <TextView
             android:id="@+id/authorTextView"
@@ -59,7 +60,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/authorImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/authorImageView"
-            app:layout_constraintTop_toTopOf="@+id/authorImageView" />
+            app:layout_constraintTop_toTopOf="@+id/authorImageView"
+            android:onClick="@{viewModel::onAuthorClick}" />
 
         <TextView
             android:id="@+id/bodyTextView"
