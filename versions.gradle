@@ -17,8 +17,11 @@ versions.room_version = '2.1.0-alpha04'
 versions.koin = '1.0.2'
 versions.okhttp = '3.13.1'
 versions.retrofit = '2.5.0'
+versions.retrofit_coroutines = '0.9.2'
+versions.retrofit_serialization = '0.2.0'
 versions.glide = '4.8.0'
 versions.timber = '4.7.1'
+versions.stetho = '1.5.0'
 
 // test
 versions.junit = '4.12'
@@ -70,8 +73,8 @@ deps.okhttp = "com.squareup.okhttp3:okhttp:${versions.okhttp}"
 
 def retrofit = [:]
 retrofit.retrofit = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
-retrofit.coroutines = 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
-retrofit.serialization = 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.2.0'
+retrofit.coroutines = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${versions.retrofit_coroutines}"
+retrofit.serialization = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${versions.retrofit_serialization}"
 deps.retrofit = retrofit
 
 def glide = [:]
@@ -80,6 +83,6 @@ glide.compiler = "com.github.bumptech.glide:compiler:${versions.glide}"
 deps.glide = glide
 
 deps.timber = "com.jakewharton.timber:timber:${versions.timber}"
-deps.stetho = 'com.facebook.stetho:stetho:1.5.0'
+deps.stetho = "com.facebook.stetho:stetho:${versions.stetho}"
 
 ext.deps = deps
