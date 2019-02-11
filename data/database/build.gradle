@@ -33,4 +33,10 @@ dependencies {
     implementation deps.room.runtime
     implementation deps.room.coroutines
     kapt deps.room.compiler
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.core_testing
+
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso_core
 }

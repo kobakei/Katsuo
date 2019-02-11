@@ -34,4 +34,10 @@ dependencies {
 
     implementation deps.glide.glide
     kapt deps.glide.compiler
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.core_testing
+
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso_core
 }

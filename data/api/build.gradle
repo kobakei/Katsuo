@@ -38,6 +38,12 @@ dependencies {
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.coroutines
     implementation deps.retrofit.serialization
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.core_testing
+
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso_core
 }
 repositories {
     mavenCentral()
