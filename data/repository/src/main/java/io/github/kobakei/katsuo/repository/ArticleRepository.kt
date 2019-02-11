@@ -22,7 +22,7 @@ class ArticleRepository(private val context: Context) {
         if (articles.isNotEmpty()) {
             return articles
         }
-        val articles2 = apiClient().getArticles().await()
+        val articles2 = apiClient().getArticlesAsync().await()
         articleDao.insertAll(*articles2.articles.toTypedArray())
         return articles2.articles
     }

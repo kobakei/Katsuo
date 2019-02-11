@@ -34,6 +34,7 @@ dependencies {
     implementation project(':ui:detail')
     implementation project(':ui:author')
     implementation project(':ui:router')
+    implementation project(':data:repository')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.kotlin.stdlib_jdk7

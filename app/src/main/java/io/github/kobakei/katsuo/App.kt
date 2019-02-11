@@ -6,6 +6,8 @@ import io.github.kobakei.katsuo.author.AuthorRouterImpl
 import io.github.kobakei.katsuo.author.AuthorViewModel
 import io.github.kobakei.katsuo.detail.DetailRouterImpl
 import io.github.kobakei.katsuo.detail.DetailViewModel
+import io.github.kobakei.katsuo.repository.AdRepository
+import io.github.kobakei.katsuo.repository.ArticleRepository
 import io.github.kobakei.katsuo.router.AuthorRouter
 import io.github.kobakei.katsuo.router.DetailRouter
 import io.github.kobakei.katsuo.router.Router
@@ -25,9 +27,18 @@ class App : Application() {
             Stetho.initializeWithDefaults(this)
         }
 
-        startKoin(this, listOf(routerModule, viewModelModule))
+        startKoin(this, listOf(
+            routerModule,
+            viewModelModule,
+            repoModule
+        ))
     }
 
+}
+
+val repoModule = module {
+    single { ArticleRepository(get()) }
+    single { AdRepository() }
 }
 
 val routerModule = module {
@@ -37,7 +48,7 @@ val routerModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { TimelineViewModel(get()) }
+    viewModel { TimelineViewModel(get(), get()) }
     viewModel { DetailViewModel() }
     viewModel { AuthorViewModel(get()) }
 }

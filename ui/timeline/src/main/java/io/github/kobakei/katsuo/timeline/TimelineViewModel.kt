@@ -1,18 +1,18 @@
 package io.github.kobakei.katsuo.timeline
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.kobakei.katsuo.entity.Article
+import io.github.kobakei.katsuo.repository.AdRepository
 import io.github.kobakei.katsuo.repository.ArticleRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class TimelineViewModel(context: Context) : ViewModel() {
-
-    // TODO DI
-    private val repo = ArticleRepository(context)
+class TimelineViewModel(
+    private val articleRepo: ArticleRepository,
+    private val adRepo: AdRepository
+) : ViewModel() {
 
     val articles = MutableLiveData<List<Article>>()
 
@@ -20,7 +20,7 @@ class TimelineViewModel(context: Context) : ViewModel() {
 
     fun loadData() {
         viewModelScope.launch {
-            articles.postValue(repo.getArticles())
+            articles.postValue(articleRepo.getArticles())
         }
     }
 
