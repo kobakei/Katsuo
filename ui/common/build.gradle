@@ -32,6 +32,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin.stdlib_jdk7
 
+    implementation deps.androidx.material
+
     implementation deps.glide.glide
     kapt deps.glide.compiler
 
