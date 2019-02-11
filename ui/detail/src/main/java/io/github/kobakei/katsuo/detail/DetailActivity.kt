@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import io.github.kobakei.katsuo.detail.databinding.DetailActivityBinding
@@ -51,6 +52,9 @@ class DetailActivity : AppCompatActivity() {
     private fun observeViewModel() {
         detailViewModel.authorClick.observe(this, Observer {
             router.author.navigateToAuthor(this, it)
+        })
+        detailViewModel.shareClick.observe(this, Observer {
+            Toast.makeText(this, "Not implemented", Toast.LENGTH_SHORT).show()
         })
     }
 

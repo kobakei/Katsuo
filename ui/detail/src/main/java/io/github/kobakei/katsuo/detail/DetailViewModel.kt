@@ -11,9 +11,13 @@ class DetailViewModel : ViewModel() {
     lateinit var article: Article
 
     val authorClick = MutableLiveData<Author>()
+    val shareClick = MutableLiveData<Unit>()
 
     fun onAuthorClick(@Suppress("UNUSED_PARAMETER") view: View) {
         authorClick.postValue(article.author)
     }
 
+    fun onShareClick(@Suppress("UNUSED_PARAMETER") view: View) {
+        shareClick.postValue(Unit)
+    }
 }
