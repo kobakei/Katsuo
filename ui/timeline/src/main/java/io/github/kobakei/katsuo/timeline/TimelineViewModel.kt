@@ -3,6 +3,7 @@ package io.github.kobakei.katsuo.timeline
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.github.kobakei.katsuo.entity.Ad
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.repository.AdRepository
 import io.github.kobakei.katsuo.repository.ArticleRepository
@@ -15,12 +16,16 @@ class TimelineViewModel(
 ) : ViewModel() {
 
     val articles = MutableLiveData<List<Article>>()
+    val ad = MutableLiveData<Ad>()
 
     val articleClick = MutableLiveData<Article>()
 
     fun loadData() {
         viewModelScope.launch {
             articles.postValue(articleRepo.getArticles())
+        }
+        viewModelScope.launch {
+            ad.postValue(adRepo.getTimelineAd())
         }
     }
 
