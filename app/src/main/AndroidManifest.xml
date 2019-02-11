@@ -20,9 +20,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".detail.DetailActivity"></activity>
+        <activity android:name=".detail.DetailActivity"
+            android:parentActivityName=".timeline.TimelineActivity"/>
 
-        <activity android:name=".author.AuthorActivity"></activity>
+        <activity android:name=".author.AuthorActivity"
+            android:parentActivityName=".timeline.TimelineActivity"/>
     </application>
 
 </manifest>
