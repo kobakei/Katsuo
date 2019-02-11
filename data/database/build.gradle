@@ -27,10 +27,10 @@ dependencies {
     implementation project(':data:entity')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation deps.kotlin.stdlib_jdk7
 
     // Room
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-coroutines:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation deps.room.runtime
+    implementation deps.room.coroutines
+    kapt deps.room.compiler
 }

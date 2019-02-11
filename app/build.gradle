@@ -36,18 +36,18 @@ dependencies {
     implementation project(':ui:router')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation deps.kotlin.stdlib_jdk7
 
-    implementation "androidx.appcompat:appcompat:$support_version"
+    implementation deps.androidx.appcompat
 
-    implementation "org.koin:koin-android-viewmodel:$koin_version"
+    implementation deps.koin_viewmodel
 
-    implementation "com.jakewharton.timber:timber:$timber_version"
-    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation deps.timber
+    implementation deps.stetho
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+    testImplementation deps.test.junit
+    testImplementation deps.test.core_testing
 
-    androidTestImplementation "androidx.test:runner:$test_runner_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso_core
 }

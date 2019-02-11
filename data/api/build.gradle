@@ -32,13 +32,12 @@ dependencies {
     implementation project(':data:entity')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation deps.kotlin.stdlib_jdk7
 
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
-    implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.2.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation deps.okhttp
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.coroutines
+    implementation deps.retrofit.serialization
 }
 repositories {
     mavenCentral()
