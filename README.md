@@ -20,6 +20,8 @@ This application does not adopt Flux or Redux. In applications where state manag
   - Module with Application class or DI related class
 - ui/timeline, ui/author, ui/detail
   - Module of each feature
+- ui/router
+  - Module of router interfaces. The implementations of routers are in each feature module.
 - ui/common
   - Module of classes and extension functions commonly used by other UI modules
 - data/repository
