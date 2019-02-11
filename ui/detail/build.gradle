@@ -55,6 +55,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 
-    androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+    androidTestImplementation "androidx.test:runner:$test_runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
 }

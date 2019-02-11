@@ -25,16 +25,19 @@ class App : Application() {
             Stetho.initializeWithDefaults(this)
         }
 
-        val module = module {
-            single<DetailRouter> { DetailRouterImpl() }
-            single<AuthorRouter> { AuthorRouterImpl() }
-            single { Router(get(), get()) }
-
-            viewModel { TimelineViewModel(get()) }
-            viewModel { DetailViewModel() }
-            viewModel { AuthorViewModel(get()) }
-        }
-        startKoin(this, listOf(module))
+        startKoin(this, listOf(routerModule, viewModelModule))
     }
 
+}
+
+val routerModule = module {
+    single<DetailRouter> { DetailRouterImpl() }
+    single<AuthorRouter> { AuthorRouterImpl() }
+    single { Router(get(), get()) }
+}
+
+val viewModelModule = module {
+    viewModel { TimelineViewModel(get()) }
+    viewModel { DetailViewModel() }
+    viewModel { AuthorViewModel(get()) }
 }
