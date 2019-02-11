@@ -57,6 +57,10 @@ In addition, I try to use what Kotlin's language function provides as much as po
 - Glide
 - Timber
 - Stetho
+
+## TODO
+
+Please check issues.
   
 ## License
 
