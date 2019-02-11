@@ -15,7 +15,7 @@ import retrofit2.http.GET
  * https://gist.github.com/kobakei/a091214688e4c03e4e582019d16cc778
  */
 interface ArticleService {
-    @GET("kobakei/a091214688e4c03e4e582019d16cc778/raw/0c2fc5cdaf7aa630a4d02a8477a905b2a20c40bc/test.json")
+    @GET("kobakei/a091214688e4c03e4e582019d16cc778/raw/3ef7c37b503cccedc86eefd739d890c37d8c9738/test.json")
     fun getArticles(): Deferred<Articles>
 }
 
