@@ -1,5 +1,7 @@
 # Katsuo
 
+[![CircleCI](https://circleci.com/gh/kobakei/Katsuo.svg?style=svg)](https://circleci.com/gh/kobakei/Katsuo)
+
 This is a sample that adopted the latest trend in Android development.
 
 This app is supposed to be the official application of the news site. This app holds timeline screen, article screen, and author's screen.
