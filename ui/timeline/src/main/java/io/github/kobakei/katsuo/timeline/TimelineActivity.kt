@@ -35,10 +35,7 @@ class TimelineActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        timelineViewModel.articles.observe(this, Observer {
-            adapter.notifyDataSetChanged()
-        })
-        timelineViewModel.ad.observe(this, Observer {
+        timelineViewModel.timelineData.observe(this, Observer {
             adapter.notifyDataSetChanged()
         })
         timelineViewModel.articleClick.observe(this, Observer {

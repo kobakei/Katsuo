@@ -26,10 +26,10 @@ class TimelineAdapter(
     private val inflater = LayoutInflater.from(context)
 
     private val articles: List<Article>
-        get() = timelineViewModel.articles.value ?: listOf()
+        get() = timelineViewModel.timelineData.value?.articles ?: listOf()
 
     private val ad: Ad?
-        get() = timelineViewModel.ad.value
+        get() = timelineViewModel.timelineData.value?.ad
 
     override fun getItemViewType(position: Int): Int {
         return if (position < articles.size) {
