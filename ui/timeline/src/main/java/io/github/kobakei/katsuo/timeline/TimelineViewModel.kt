@@ -32,19 +32,36 @@ class TimelineViewModel(
 
     val articleClick = MutableLiveData<Article>()
 
+    /**
+     * 複数のデータを取得して表示するサンプル
+     * ・並列実行
+     * ・片方でも失敗したらまとめて失敗とする
+     *
+     * TODO 書き直す
+     */
     fun loadData() {
         viewModelScope.launch {
             runCatching {
-                val articles = async { articleRepo.getArticles() }.await()
-                val ad = async { adRepo.getTimelineAd() }.await()
-                TimelineData(articles, ad)
-            }.onSuccess {
-                timelineData.postValue(it)
-                progressVisibility.postValue(View.GONE)
-            }.onFailure {
-                reloadVisibility.postValue(View.VISIBLE)
-                progressVisibility.postValue(View.GONE)
-            }
+                val articlesAsync = async {
+                    articleRepo.getArticles()
+                }
+                val adAsync = async {
+                    adRepo.getTimelineAd()
+                }
+                TimelineData(
+                    articlesAsync.await(),
+                    adAsync.await()
+                )
+            }.fold(
+                onSuccess = {
+                    timelineData.postValue(it)
+                    progressVisibility.postValue(View.GONE)
+                },
+                onFailure = {
+                    reloadVisibility.postValue(View.VISIBLE)
+                    progressVisibility.postValue(View.GONE)
+                }
+            )
         }
     }
 
