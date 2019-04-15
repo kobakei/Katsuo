@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 data class Author(
     @ColumnInfo(name = "author_id") val id: Long,
     val name: String,
-    @Embedded val image: AuthorImage
+    @Embedded val image: AuthorImage?
 ): Parcelable
 
 @Parcelize

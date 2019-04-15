@@ -51,7 +51,7 @@ val dataModule = module {
 }
 
 val repoModule = module {
-    single { ArticleRepository(get()) }
+    single { ArticleRepository(get(), get()) }
     single { AdRepository(get()) }
 }
 

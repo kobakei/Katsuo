@@ -39,7 +39,9 @@ dependencies {
     implementation deps.room.coroutines
 
     testImplementation deps.test.junit
-    testImplementation deps.test.arch_core_testing
+    testImplementation deps.test.mockk
+    testImplementation deps.test.truth
+    testImplementation deps.test.ext_truth
 
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso_core
