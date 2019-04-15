@@ -12,9 +12,11 @@ import io.github.kobakei.katsuo.router.AuthorRouter
 import io.github.kobakei.katsuo.router.DetailRouter
 import io.github.kobakei.katsuo.router.Router
 import io.github.kobakei.katsuo.timeline.TimelineViewModel
-import org.koin.android.ext.android.startKoin
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import timber.log.Timber
 
 class App : Application() {
@@ -27,11 +29,15 @@ class App : Application() {
             Stetho.initializeWithDefaults(this)
         }
 
-        startKoin(this, listOf(
-            routerModule,
-            viewModelModule,
-            repoModule
-        ))
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(
+                routerModule,
+                viewModelModule,
+                repoModule
+            )
+        }
     }
 
 }
