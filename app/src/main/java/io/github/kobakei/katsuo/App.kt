@@ -2,8 +2,11 @@ package io.github.kobakei.katsuo
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import io.github.kobakei.katsuo.api.apiClient
 import io.github.kobakei.katsuo.author.AuthorRouterImpl
 import io.github.kobakei.katsuo.author.AuthorViewModel
+import io.github.kobakei.katsuo.database.ArticleDao
+import io.github.kobakei.katsuo.database.createDb
 import io.github.kobakei.katsuo.detail.DetailRouterImpl
 import io.github.kobakei.katsuo.detail.DetailViewModel
 import io.github.kobakei.katsuo.repository.AdRepository
@@ -35,16 +38,21 @@ class App : Application() {
             modules(
                 routerModule,
                 viewModelModule,
-                repoModule
+                repoModule,
+                dataModule
             )
         }
     }
+}
 
+val dataModule = module {
+    single { apiClient() }
+    single { createDb(get()).articleDao() }
 }
 
 val repoModule = module {
     single { ArticleRepository(get()) }
-    single { AdRepository() }
+    single { AdRepository(get()) }
 }
 
 val routerModule = module {
