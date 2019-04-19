@@ -1,6 +1,5 @@
 package io.github.kobakei.katsuo.author
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,9 +8,9 @@ import io.github.kobakei.katsuo.entity.Author
 import io.github.kobakei.katsuo.repository.ArticleRepository
 import kotlinx.coroutines.launch
 
-class AuthorViewModel(context: Context) : ViewModel() {
-
-    private val articleRepository = ArticleRepository(context)
+class AuthorViewModel(
+    private val articleRepository: ArticleRepository
+) : ViewModel() {
 
     val author = MutableLiveData<Author>()
     val articles = MutableLiveData<List<Article>>()

@@ -30,11 +30,15 @@ android {
 }
 
 dependencies {
+    // DIでモジュール間を結合するため、ほぼすべてのモジュールに依存する
     implementation project(':ui:timeline')
     implementation project(':ui:detail')
     implementation project(':ui:author')
     implementation project(':ui:router')
     implementation project(':data:repository')
+    implementation project(':data:api')
+    implementation project(':data:database')
+    implementation project(':data:entity')
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.kotlin.stdlib_jdk7
@@ -46,8 +50,12 @@ dependencies {
     implementation deps.timber
     implementation deps.stetho
 
+    // Room
+    implementation deps.room.runtime
+    implementation deps.room.coroutines
+
     testImplementation deps.test.junit
-    testImplementation deps.test.core_testing
+    testImplementation deps.test.arch_core_testing
 
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso_core

@@ -1,8 +1,7 @@
 package io.github.kobakei.katsuo.repository
 
-import android.content.Context
-import io.github.kobakei.katsuo.api.apiClient
-import io.github.kobakei.katsuo.database.createDb
+import io.github.kobakei.katsuo.api.ApiClient
+import io.github.kobakei.katsuo.database.ArticleDao
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.entity.Author
 
@@ -10,9 +9,10 @@ import io.github.kobakei.katsuo.entity.Author
  * 記事のリポジトリクラス
  * ローカルDBとAPIからデータを取得する。取得の優先度は、room => api。
  */
-class ArticleRepository(private val context: Context) {
-
-    private val articleDao = createDb(context).articleDao()
+class ArticleRepository(
+    private val articleDao: ArticleDao,
+    private val apiClient: ApiClient
+) {
 
     /**
      * すべての記事を取得する
@@ -22,7 +22,7 @@ class ArticleRepository(private val context: Context) {
         if (articles.isNotEmpty()) {
             return articles
         }
-        val articles2 = apiClient().getArticlesAsync().await()
+        val articles2 = apiClient.getArticlesAsync().await()
         articleDao.insertAll(*articles2.articles.toTypedArray())
         return articles2.articles
     }

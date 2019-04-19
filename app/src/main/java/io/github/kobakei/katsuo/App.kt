@@ -2,8 +2,11 @@ package io.github.kobakei.katsuo
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import io.github.kobakei.katsuo.api.apiClient
 import io.github.kobakei.katsuo.author.AuthorRouterImpl
 import io.github.kobakei.katsuo.author.AuthorViewModel
+import io.github.kobakei.katsuo.database.ArticleDao
+import io.github.kobakei.katsuo.database.createDb
 import io.github.kobakei.katsuo.detail.DetailRouterImpl
 import io.github.kobakei.katsuo.detail.DetailViewModel
 import io.github.kobakei.katsuo.repository.AdRepository
@@ -12,9 +15,11 @@ import io.github.kobakei.katsuo.router.AuthorRouter
 import io.github.kobakei.katsuo.router.DetailRouter
 import io.github.kobakei.katsuo.router.Router
 import io.github.kobakei.katsuo.timeline.TimelineViewModel
-import org.koin.android.ext.android.startKoin
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import timber.log.Timber
 
 class App : Application() {
@@ -27,18 +32,27 @@ class App : Application() {
             Stetho.initializeWithDefaults(this)
         }
 
-        startKoin(this, listOf(
-            routerModule,
-            viewModelModule,
-            repoModule
-        ))
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(
+                routerModule,
+                viewModelModule,
+                repoModule,
+                dataModule
+            )
+        }
     }
+}
 
+val dataModule = module {
+    single { apiClient() }
+    single { createDb(get()).articleDao() }
 }
 
 val repoModule = module {
-    single { ArticleRepository(get()) }
-    single { AdRepository() }
+    single { ArticleRepository(get(), get()) }
+    single { AdRepository(get()) }
 }
 
 val routerModule = module {
