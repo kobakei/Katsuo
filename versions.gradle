@@ -34,6 +34,7 @@ versions.stetho = '1.5.0'
 versions.junit = '4.12'
 versions.test_core = '1.1.0'
 versions.test_runner = '1.1.0'
+versions.test_rules = '1.1.0'
 versions.espresso_core = '3.1.1'
 versions.robolectric = '4.2'
 versions.truth = "0.44"

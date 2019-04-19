@@ -13,6 +13,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // robolectric
+        testOptions.unitTests.includeAndroidResources = true
     }
     buildTypes {
         release {
@@ -55,7 +58,11 @@ dependencies {
     implementation deps.room.coroutines
 
     testImplementation deps.test.junit
+    testImplementation deps.test.runner
+    testImplementation deps.test.rules
+    testImplementation deps.test.ext_junit_ktx
     testImplementation deps.test.arch_core_testing
+    testImplementation deps.test.robolectric
 
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso_core
