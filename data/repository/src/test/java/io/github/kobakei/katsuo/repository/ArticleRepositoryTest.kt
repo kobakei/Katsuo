@@ -7,9 +7,7 @@ import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.entity.Articles
 import io.github.kobakei.katsuo.entity.Author
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
@@ -28,9 +26,9 @@ class ArticleRepositoryTest {
         coEvery { dao.insertAll(any(), any(), any()) } returns Unit
 
         val api = mockk<ApiClient>()
-        every { api.getArticlesAsync() } returns CompletableDeferred(Articles(
+        coEvery { api.getArticlesAsync() } returns Articles(
             articles = articles
-        ))
+        )
 
         val repo = ArticleRepository(dao, api)
         runBlocking {
