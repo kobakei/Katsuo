@@ -50,15 +50,16 @@ In addition, I try to use what Kotlin's language function provides as much as po
   - LiveData
   - KTX
   - Room
-    - Coroutines support
 - Koin
 - OkHttp
 - Retrofit
-  - Kotlin coroutines adapter
   - KotlinX serialization converter
 - Glide
 - Timber
 - Stetho
+- Robolectric
+- MockK
+- Truth
 
 ## TODO
 
