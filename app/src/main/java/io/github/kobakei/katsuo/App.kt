@@ -5,7 +5,6 @@ import com.facebook.stetho.Stetho
 import io.github.kobakei.katsuo.api.apiClient
 import io.github.kobakei.katsuo.author.AuthorRouterImpl
 import io.github.kobakei.katsuo.author.AuthorViewModel
-import io.github.kobakei.katsuo.database.ArticleDao
 import io.github.kobakei.katsuo.database.createDb
 import io.github.kobakei.katsuo.detail.DetailRouterImpl
 import io.github.kobakei.katsuo.detail.DetailViewModel
@@ -36,10 +35,12 @@ class App : Application() {
             androidLogger()
             androidContext(this@App)
             modules(
-                routerModule,
-                viewModelModule,
-                repoModule,
-                dataModule
+                listOf(
+                    routerModule,
+                    viewModelModule,
+                    repoModule,
+                    dataModule
+                )
             )
         }
     }

@@ -36,7 +36,6 @@ dependencies {
 
     implementation deps.okhttp
     implementation deps.retrofit.retrofit
-    implementation deps.retrofit.coroutines
     implementation deps.retrofit.serialization
 
     testImplementation deps.test.junit

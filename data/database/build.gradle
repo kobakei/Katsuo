@@ -31,7 +31,7 @@ dependencies {
 
     // Room
     implementation deps.room.runtime
-    implementation deps.room.coroutines
+    implementation deps.room.ktx
     kapt deps.room.compiler
 
     testImplementation deps.test.junit
