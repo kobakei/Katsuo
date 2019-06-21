@@ -4,6 +4,7 @@ import io.github.kobakei.katsuo.api.ApiClient
 import io.github.kobakei.katsuo.database.ArticleDao
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.entity.Author
+import kotlinx.coroutines.delay
 
 /**
  * 記事のリポジトリクラス
@@ -18,6 +19,7 @@ class ArticleRepository(
      * すべての記事を取得する
      */
     suspend fun getArticles(): List<Article> {
+        delay(3000L)
         val articles = articleDao.getAll()
         if (articles.isNotEmpty()) {
             return articles

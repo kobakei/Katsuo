@@ -8,10 +8,7 @@ import io.github.kobakei.katsuo.entity.Ad
 import io.github.kobakei.katsuo.entity.Article
 import io.github.kobakei.katsuo.repository.AdRepository
 import io.github.kobakei.katsuo.repository.ArticleRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import timber.log.Timber
 
 data class TimelineData(
@@ -36,32 +33,25 @@ class TimelineViewModel(
      * 複数のデータを取得して表示するサンプル
      * ・並列実行
      * ・片方でも失敗したらまとめて失敗とする
-     *
-     * TODO 書き直す
      */
     fun loadData() {
         viewModelScope.launch {
-            runCatching {
-                val articlesAsync = async {
-                    articleRepo.getArticles()
-                }
-                val adAsync = async {
-                    adRepo.getTimelineAd()
-                }
-                TimelineData(
-                    articlesAsync.await(),
-                    adAsync.await()
+            supervisorScope {
+                runCatching {
+                    val articlesAsync = async { articleRepo.getArticles() }
+                    val adAsync = async { adRepo.getTimelineAd() }
+
+                    TimelineData(articlesAsync.await(), adAsync.await())
+                }.fold(
+                    onSuccess = {
+                        timelineData.postValue(it)
+                    },
+                    onFailure = {
+                        reloadVisibility.postValue(View.VISIBLE)
+                    }
                 )
-            }.fold(
-                onSuccess = {
-                    timelineData.postValue(it)
-                    progressVisibility.postValue(View.GONE)
-                },
-                onFailure = {
-                    reloadVisibility.postValue(View.VISIBLE)
-                    progressVisibility.postValue(View.GONE)
-                }
-            )
+                progressVisibility.postValue(View.GONE)
+            }
         }
     }
 
