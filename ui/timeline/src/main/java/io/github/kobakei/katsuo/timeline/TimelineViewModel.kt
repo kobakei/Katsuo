@@ -31,16 +31,18 @@ class TimelineViewModel(
 
     /**
      * 複数のデータを取得して表示するサンプル
-     * ・並列実行
-     * ・片方でも失敗したらまとめて失敗とする
+     * ・並列実行: suspend blockをasyncで囲む
+     * ・例外処理: supervisorScope.launchで囲む
+     * ・エラーを無視: asyncの中をさらにrunCatchingで囲み、ResultをgetOrNullで変換
      */
     fun loadData() {
         viewModelScope.launch {
             supervisorScope {
                 runCatching {
                     val articlesAsync = async { articleRepo.getArticles() }
-                    val adAsync = async { adRepo.getTimelineAd() }
-
+                    val adAsync = async {
+                        runCatching { adRepo.getTimelineAd() }.getOrNull()
+                    }
                     TimelineData(articlesAsync.await(), adAsync.await())
                 }.fold(
                     onSuccess = {

@@ -14,7 +14,7 @@ class AdRepository(
 
     suspend fun getTimelineAd(): Ad {
         delay(3000L)
-        //throw IllegalArgumentException()
+        throw IllegalArgumentException()
         return apiClient.getAdsAsync().timeline
     }
 
